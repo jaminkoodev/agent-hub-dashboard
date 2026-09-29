@@ -1,0 +1,10 @@
+{
+  "machines": [
+    {
+      "id": "local-agent",
+      "name": "Local agent",
+      "baseUrl": "http://127.0.0.1:3012",
+      "tokenEnv": "AGENT_HUB_UPSTREAM_TOKEN"
+    }
+  ]
+}

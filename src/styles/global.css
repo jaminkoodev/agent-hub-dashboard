@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #6366f1;
+  --color-primary-light: #818cf8;
+  --color-primary-dark: #4f46e5;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-surface: #18181b;
+  --color-surface-light: #27272a;
+  --color-surface-lighter: #3f3f46;
+  --font-family-sans: 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #3f3f46 transparent;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #52525b; }
+
+/* Smooth sidebar transitions */
+aside, [data-sidebar] {
+  transition: width 0.2s ease-in-out;
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+button:focus-visible,
+a:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+input:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+}
+
+/* Ensure full-height flex chains work */
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Safe area for notched devices (iPhone etc.) */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Hide scrollbar but allow scrolling */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mobile touch improvements */
+@media (max-width: 767px) {
+  * { -webkit-touch-callout: none; }
+  button, a { touch-action: manipulation; }
+}
+
+/* ─── Markdown typography in chat ─── */
+
+.chat-message p {
+  margin: 0.3rem 0;
+  line-height: 1.6;
+}
+
+.chat-message p:first-child { margin-top: 0; }
+.chat-message p:last-child  { margin-bottom: 0; }
+
+/* Headings */
+.chat-message h1 { font-size: 1.1rem; font-weight: 700; color: #f4f4f5; margin: 0.8em 0 0.4em; letter-spacing: -0.01em; }
+.chat-message h2 { font-size: 1rem; font-weight: 700; color: #f4f4f5; margin: 0.7em 0 0.35em; letter-spacing: -0.01em; }
+.chat-message h3 { font-size: 0.9rem; font-weight: 600; color: #e4e4e7; margin: 0.65em 0 0.3em; }
+.chat-message h4 { font-size: 0.85rem; font-weight: 600; color: #e4e4e7; margin: 0.6em 0 0.25em; }
+.chat-message h5,
+.chat-message h6 { font-size: 0.8125rem; font-weight: 600; color: #d4d4d8; margin: 0.55em 0 0.2em; }
+
+.chat-message h1:first-child,
+.chat-message h2:first-child,
+.chat-message h3:first-child,
+.chat-message h4:first-child { margin-top: 0; }
+
+/* Lists */
+.chat-message ul { list-style-type: disc; padding-left: 1.25rem; margin: 0.4rem 0; }
+.chat-message ol { list-style-type: decimal; padding-left: 1.25rem; margin: 0.4rem 0; }
+.chat-message li { margin: 0.15rem 0; color: #d4d4d8; line-height: 1.55; }
+.chat-message li > ul,
+.chat-message li > ol { margin: 0.1rem 0; }
+
+/* Blockquote */
+.chat-message blockquote {
+  border-left: 2px solid #6366f1;
+  padding-left: 0.75rem;
+  color: #a1a1aa;
+  margin: 0.4rem 0;
+  font-style: italic;
+}
+
+/* Code */
+.chat-message pre {
+  background: #1e1e2e;
+  border-radius: 6px;
+  padding: 10px 14px;
+  overflow-x: auto;
+  margin: 6px 0;
+}
+
+.chat-message code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 0.8125rem;
+}
+
+.chat-message p code,
+.chat-message li code {
+  background: #27272a;
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+}
+
+/* Tables */
+.chat-message table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.5rem 0;
+  font-size: 0.75rem;
+}
+
+.chat-message th,
+.chat-message td {
+  border: 1px solid #3f3f46;
+  padding: 0.35rem 0.6rem;
+  text-align: left;
+}
+
+.chat-message th {
+  background: #27272a;
+  font-weight: 600;
+  color: #e4e4e7;
+}
+
+.chat-message td {
+  color: #d4d4d8;
+}
+
+/* Links */
+.chat-message a {
+  color: #818cf8;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.chat-message a:hover {
+  color: #a5b4fc;
+}
+
+/* Images */
+.chat-message img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin: 0.4rem 0;
+}
+
+/* Horizontal rule */
+.chat-message hr {
+  border: none;
+  border-top: 1px solid #3f3f46;
+  margin: 0.75rem 0;
+}
+
+/* Strong / emphasis */
+.chat-message strong { color: #f4f4f5; }
+.chat-message em { color: #d4d4d8; }
